@@ -3,7 +3,7 @@ parameters:
     database_host: 127.0.0.1
     database_port: 3306
     database_name: db_proyecto_iot
-    database_user: root
+    database_user: root_docxflow
     database_password: root
     mailer_transport: smtp
     mailer_host: 127.0.0.1
