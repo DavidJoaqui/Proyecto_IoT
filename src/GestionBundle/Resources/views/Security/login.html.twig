@@ -1,0 +1,48 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('public/css/signin.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    {{ parent() }}
+
+    <div class="container">
+        <form action="{{ path('login_check') }}" method="POST" class="form-signin">
+            <h2 class="form-signin-heading">{{ 'Iniciar Sesion' }}</h2>
+
+            {% if error %}
+                <div class="text-warning">
+                    <p>
+                        <strong>
+                           <div style="color: #ffffff"> {{ error.messageKey | trans}}</div>
+                        </strong>
+                    </p>
+                </div>
+            {% endif %}
+
+
+            <div class="row well">
+                <label for="username" id="credenciales"><span class="glyphicon glyphicon-user"></span> Nombre de Usuario:</label>
+
+                <input type="text" id="username" class="form-control" name="_username"
+                       value="{{ last_username }}" placeholder="ingrese su nombre de usuario" required autofocus/><br>
+
+                <label for="passsword" id="credenciales"><span class="glyphicon glyphicon-lock"></span> Contraseña:</label><br>
+
+                <input type="password" id="passsword" class="form-control" name="_password"
+
+                       placeholder="ingresa tu contraseña" required/><br>
+
+                <input type="hidden" name="_target_path" value="user_homepage"/>
+
+                <button type="submit" class="btn btn-md btn-primary btn-block">Iniciar Sesion</button>
+
+            </div>
+        </form>
+    </div>
+
+
+{% endblock %}

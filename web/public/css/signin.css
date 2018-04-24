@@ -1,0 +1,68 @@
+body{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-image: url("../images/tec.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #0094ff;
+
+}
+
+.form-signin{
+    max-width: 330px;
+    padding: 15px;
+    margin:0 auto;
+    background-color: #0094ff;
+    border-radius: 5px;
+    color: #ffffff;
+
+}
+#credenciales{
+    color: #000000;
+}
+
+.form-signin .form-signin-heading,
+.form-signin.checkbox{
+    margin-bottom: 10px;
+}
+
+.form-signin.checkbox{
+    font-weight: normal;
+
+}
+.form-signin .form-control{
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+
+}
+.form-signin .form-contro:focus{
+    z-index: 2;
+}
+
+.form-signin input[type="email"]{
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+
+}
+
+.form-signin input[type="password"]{
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-left-radius: 0;
+}
+
+@media only screen and (max-width: 767px) {
+body {
+background-image: url("../images/tecl3.jpg");
+
+}
+}
+    

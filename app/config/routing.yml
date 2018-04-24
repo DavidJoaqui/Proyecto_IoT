@@ -1,0 +1,18 @@
+gestion:
+    resource: "@GestionBundle/Controller/GestionController.php"
+    type: annotation
+
+vehiculos:
+        resource: "@GestionBundle/Controller/VehiculoController.php"
+        type: annotation
+security:
+    resource: "@GestionBundle/Controller/SecurityController.php"
+    type: annotation
+
+propietario:
+    resource: "@GestionBundle/Controller/PropietarioController.php"
+    type: annotation
+
+user_login:
+    resource: "@GestionBundle/Resources/config/routing.yml"
+    prefix: /

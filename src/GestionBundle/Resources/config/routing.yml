@@ -1,0 +1,14 @@
+homepage:
+    path:     /
+    defaults: { _controller: GestionBundle:Gestion:home }
+
+login:
+    path:     /login
+    defaults: { _controller: GestionBundle:Security:login }
+
+login_check:
+    path:     /login_check
+    defaults: { _controller: GestionBundle:Security:loginCheck }
+
+user_logout:
+    path:     /logout

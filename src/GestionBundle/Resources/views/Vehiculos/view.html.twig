@@ -1,0 +1,83 @@
+{% extends 'layout.html.twig' %}
+
+
+
+{% block body %}
+
+    {{ parent() }}
+
+    <div class="main container">
+        <div class="row well">
+            <div class="col-md-9">
+                <div class="well hidden" style="background-color: #f5b6a9; color: #ffffff" id="notificacion"></div>
+                <h3 id="vistaUsuariotitle">Información del Vehiculo</h3><br>
+
+                <fieldset>
+
+                    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4" id="editar_view_user">
+                        <h3>Acciones</h3>
+
+                        <a href="{{ path('vehiculo_edit',{ id: vehiculo.id } ) }}" class="btn btn-primary btn-lg btn-block">
+                            <span class="glyphicon glyphicon-edit"></span>
+                            {{ ' Editar Vehiculo' }}
+
+                        </a>
+                        &nbsp;
+                        {{ include('GestionBundle:Vehiculos:forms/form.html.twig',{form_delete_vehiculo: delete_form, mensaje_eliminacion:
+                            'Seguro que desea eliminar el vehiculo?' }) }}
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Popietario</label>
+                        <h2>
+                        {{vehiculo.propietario.fullName}}
+                        </h2>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tipo de Vehiculo</label><br>
+                        {{vehiculo.tipo}}
+                    </div>
+                    <div class="form-group">
+                        <label>Marca</label><br>
+                        {{vehiculo.marca}}
+                    </div>
+
+                    <div class="form-group">
+                        <label>Modelo</label><br>
+                        {{ vehiculo.modelo }}
+                    </div>
+
+                    <div class="form-group">
+                        <label>Placa</label><br>
+                        {{ vehiculo.placa }}
+                    </div>
+
+                    <div class="form-group">
+                        <label>Color</label><br>
+                        {{ vehiculo.color }}
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Creado</label><br>
+
+
+                        {{ vehiculo.createdAt|date('d-m-Y H:i') }}
+
+
+                    </div>
+                    <div class="form-group">
+                        <label>Modificado</label><br>
+
+                        {{ vehiculo.updatedAt|date('d-m-Y H:i')  }}
+
+                    </div>
+
+                </fieldset>
+            </div>
+        </div>
+    </div>
+{% endblock %}

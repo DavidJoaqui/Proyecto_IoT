@@ -1,0 +1,103 @@
+{% extends 'layout.html.twig' %}
+
+
+
+{% block body %}
+
+    {{ parent() }}
+
+    <div class="main container" >
+        <div class="row well">
+            <div class="col-md-9">
+                <div class="well hidden" style="background-color: #f5b6a9; color: #ffffff" id="notificacion"></div>
+                <h3 id="vistaUsuariotitle">Informacion del Propietario</h3><br>
+
+                <fieldset>
+
+                    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4" id="editar_view_user">
+                        <h3>Acciones</h3>
+
+                        <a href="{{ path('propietario_edit',{ id: propietario.id } ) }}" class="btn btn-primary btn-lg btn-block">
+                            <span class="glyphicon glyphicon-edit"></span>
+                            {{ 'Editar Propietario' }}
+
+                        </a>
+                        &nbsp;
+                        {{ include('GestionBundle:propietarios:forms/form.html.twig',{form_delete_propietario: delete_form, mensaje_eliminacion:
+                            'Seguro que desea eliminar el Usuario ?'}) }}
+
+                    </div>
+
+                    <h2> {{ propietario.nombres }} {{ propietario.apellidos }}</h2><br>
+
+                    <div class="form-group">
+                        <label>Nombre Usuario</label><br>
+                        {{propietario.username}}
+                    </div>
+                    <div class="form-group">
+                        <label>Numero de documento</label><br>
+                        {{propietario.documento}}
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nombre</label><br>
+                        {{ propietario.nombres }}
+                    </div>
+
+                    <div class="form-group">
+                        <label>Apellido</label><br>
+                        {{ propietario.apellidos }}
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email</label><br>
+                        {{ propietario.email }}
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Rol</label><br>
+                        {% if propietario.role=='ROLE_ADMIN' %}
+                            Administrador
+                        {% elseif propietario.role=='ROLE_USER' %}
+                            Usuario
+                        {% endif %}
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Telefono</label><br>
+                        {{ propietario.telefono }}
+                    </div>
+
+                    <div class="form-group">
+                        <label>Estado</label><br>
+                        {% if propietario.isActive == 1 %}
+                            <span class="text-success"><span class="glyphicon glyphicon-ok"></span> Activo</span>
+                        {% elseif propietario.isActive == 0 %}
+                            <span class="text-danger"><span class="glyphicon glyphicon-remove"></span> Inactivo</span>
+
+                        {% endif %}
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Creado</label><br>
+
+
+                        {{ propietario.createdAt|date('d-m-Y H:i') }}
+
+
+                    </div>
+                    <div class="form-group">
+                        <label>Modificado</label><br>
+
+                        {{ propietario.updatedAt|date('d-m-Y H:i')  }}
+
+                    </div>
+
+                </fieldset>
+            </div>
+        </div>
+    </div>
+{% endblock %}

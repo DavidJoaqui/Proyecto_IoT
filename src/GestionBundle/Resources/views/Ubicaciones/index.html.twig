@@ -1,0 +1,64 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+    <center>
+        <h1 style="color: #1b6d85">Registro de Ubicaciones</h1>
+    </center>
+
+    <div class="container">
+        <div class="col-md-12 col-xs-12 col-lg-12">
+            <div class="page-header margin-none">
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped table-bordered">
+                        total registros:{{ paginacion.getTotalItemCount }}
+                            <thead>
+                            <tr>
+                                <th>Estado</th>
+                                <th>Latitud</th>
+                                <th>Longitud</th>
+                                <th>placa vehiculo</th>
+                                <th>Tipo</th>
+                                <th>Propietario</th>
+                                <th>{{ knp_pagination_sortable(paginacion,'Fecha Ubicación','u.createdAt') }}</th>
+
+                            </tr>
+                            </thead>
+
+                         <tbody>
+
+                            {% for ubicacion in paginacion %}
+
+                                <tr data-id="{{ ubicacion.id }}">
+
+                                    {% if ubicacion.isActive == "1" %}
+
+                                        <td><span class="glyphicon glyphicon-ok text-success">Valida</span> </td>
+
+                                    {% elseif ubicacion.isActive == "0" %}
+
+                                        <td><span class="glyphicon glyphicon-remove text-danger">Invalida</span> </td>
+
+                                    {% endif %}
+                                    <td>{{ ubicacion.latitud }}</td>
+                                    <td>{{ ubicacion.longitud }}</td>
+                                    <td>{{ ubicacion.vehiculo.placa }}</td>
+                                    <td>{{ ubicacion.vehiculo.tipo }}</td>
+                                    <td>{{ ubicacion.vehiculo.propietario.fullName }}</td>
+                                    <td>{{ ubicacion.createdAt  | date('d-m-Y H:i') }}</td>
+
+
+                                </tr>
+
+                            {% endfor %}
+                         </tbody>
+                    </table>
+                </div>
+
+                <div class="navigation">
+                    {{ knp_pagination_render(paginacion) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

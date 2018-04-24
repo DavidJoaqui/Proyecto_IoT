@@ -1,0 +1,26 @@
+{{ form_start(form_delete_propietario,{'attr': {'id':id |default('form') }} ) }}
+
+{{ form_widget(form_delete_propietario) }}
+
+{% if with_submit is not defined or with_submit == true %}
+
+    <a type="button" class="btn btn-lg btn-block btn-danger" onclick="confirmDelete()">
+        <span class="glyphicon glyphicon-trash"> </span>
+        {{ 'Eliminar Propietario' }}
+    </a>
+{% endif %}
+{{ form_end(form_delete_propietario) }}
+
+<script>
+
+    var message='{{ mensaje_eliminacion }}';
+    function confirmDelete() {
+        bootbox.confirm( message,function(result){
+            if(result == true){
+                document.form.submit();
+            }
+
+        });
+    }
+
+</script>

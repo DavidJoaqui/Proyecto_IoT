@@ -1,0 +1,58 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+
+    encoders:
+            GestionBundle\Entity\Propietario:
+                algorithm: bcrypt
+                cost: 12
+
+    # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    providers:
+            our_db_provider:
+                        entity:
+                            class: GestionBundle:Propietario
+                            property: username
+
+
+    firewalls:
+            # disables authentication for assets and the profiler, adapt it according to your needs
+
+            default:
+               anonymous: ~
+               http_basic: ~
+               form_login:
+                      login_path: /login
+                      check_path: /login_check
+                      username_parameter: _username
+                      password_parameter: _password
+
+               logout:
+                      path: /logout
+                      target: /login
+                #http_basic: ~
+                #provider: our_db_provider
+                # activate different ways to authenticate
+
+                # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+                #http_basic: ~
+
+                # https://symfony.com/doc/current/security/form_login_setup.html
+                #form_login: ~
+
+            dev:
+                pattern: ^/(_(profiler|wdt)|css|images|js)/
+                security: false
+
+            main:
+                anonymous: ~
+
+    access_control:
+                  #path : ruta ,  <--- role o usuario que puede ingresar a esta ruta<---
+                - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+                - { path: ^/$, roles: IS_AUTHENTICATED_FULLY }
+                 #path : ruta ,  <--- role o usuario que puede ingresar a esta ruta<---
+                - { path: ^/propietarios/index, roles: [ROLE_ADMIN] }
+                - { path: ^/propietarios/add, roles: [ROLE_ADMIN] }
+                - { path: ^/vehiculos/index, roles: [ROLE_ADMIN,ROLE_USER]}
+                - { path: ^/ubicaciones/index, roles: [ROLE_ADMIN, ROLE_USER] }

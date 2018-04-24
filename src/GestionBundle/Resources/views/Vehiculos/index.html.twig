@@ -1,0 +1,81 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="progress no-border hidden" id="delete-progress">
+        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0"
+             aria-valuemax="100" style="width: 100%;">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    {{ include('GestionBundle:Vehiculos:mensajes/confirmacion.html.twig') }}
+    {{ include('GestionBundle:Vehiculos:mensajes/danger.html.twig') }}
+
+    <center>
+        <h1>Gestion de Vehiculos</h1>
+    </center>
+    <div class="container">
+        <div class="col-md-12">
+            <div class="page-header margin-none">
+                <div class="table-responsive">
+                     <table class="table table-hover table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th>Tipo</th>
+                                <th>Marca</th>
+                                <th>Modelo</th>
+                                <th>Placa</th>
+                                <th>Color</th>
+                                <th>Propietario</th>
+                                <th>Acciones</th>
+
+                            </tr>
+                            </thead>
+
+                            <tbody>
+
+                            {% for vehiculo in vehiculos %}
+                                <tr data-id="{{ vehiculo.id }}">
+                                    <td>{{ vehiculo.tipo }}</td>
+                                    <td>{{ vehiculo.marca }}</td>
+                                    <td>{{ vehiculo.modelo }}</td>
+                                    <td>{{ vehiculo.placa }}</td>
+                                    <td>{{ vehiculo.color }}</td>
+                                    <td>{{ vehiculo.propietario.fullName }}</td>
+
+                                    <td>
+
+                                        <a href="{{ path('vehiculo_view',{id:vehiculo.id}) }}" class="btn btn-sm btn-info">
+                                            Ver
+                                            <span class="glyphicon glyphicon-eye-open"> </span>
+                                        </a>
+
+                                        <a href="{{ path('vehiculo_edit',{id:vehiculo.id}) }}" class="btn btn-sm btn-primary">
+                                            Editar
+                                            <span class="glyphicon glyphicon-edit"> </span>
+                                        </a>
+                                        <a href="#" class="btn btn-sm btn-danger btn-delete">
+                                            Eliminar
+                                            <span class="glyphicon glyphicon-trash"> </span>
+                                        </a>
+
+
+                                    </td>
+
+                                </tr>
+
+                            {% endfor %}
+                            </tbody>
+                     </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{ include('GestionBundle:Vehiculos:forms/form.html.twig',{form_delete_vehiculo: delete_form_ajax, mensaje_eliminacion:'Seguro que desea eliminar el vehiculo..?', id: 'form-delete', with_submit: false }) }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent()  }}
+    <script src="{{ asset('bundles/gestion/delete-vehiculo.js')}}"></script>
+{% endblock %}

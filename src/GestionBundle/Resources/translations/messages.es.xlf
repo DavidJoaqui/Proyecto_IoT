@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="es" datatype="plaintext" original="file.ext">
+        <body>
+
+
+            <trans-unit id="10">
+                <source>Previous</source>
+                <target>Anterior</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Next</source>
+                <target>Siguiente</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>Invalid credentials.</source>
+                <target>Usuario o contraseña invalidos</target>
+            </trans-unit>
+
+            <trans-unit id="20">
+                <source>Account is disabled.</source>
+                <target>La cuenta esta deshabilitada!</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>please sign in</source>
+                <target>Iniciar Sesion</target>
+            </trans-unit>
+
+
+        </body>
+    </file>
+</xliff>

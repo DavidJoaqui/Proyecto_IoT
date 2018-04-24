@@ -1,0 +1,61 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+    {{ parent() }}
+
+    <center>
+    <div class="text-success container text-center" style="padding-bottom: 30px">
+
+        <div class="container">
+        <h2 class="text-success text-center">
+            <span class="glyphicon glyphicon-ok"></span>
+            Bienvenido!
+            {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
+                {{ app.user.getFullName }}
+            {% endif %}
+        </h2>
+
+            {% if app.user.role == 'ROLE_ADMIN' %}
+                Administrador
+            {% elseif app.user.role == 'ROLE_USER' %}
+                Usuario
+            {% endif %}
+            :
+            {{ app.user.getFullName }}
+
+
+            <center>
+            <div style="padding-top: 30px">
+                <table>
+                    <thead><h1>Fundación Universitaria de Popayán</h1>
+                        <h2>Proyecto de Geolocalizacion</h2>
+                    </thead>
+
+                    <th>
+                        <center>
+                            <img src="{{ asset('public/images/fup.jpg') }}" class="img-thumbnail" width="200" height="200">
+                        </center>
+                    </th>
+
+                </table>
+            </div>
+
+            <div>
+                <br>
+                <p>
+                   <strong> Proyecto Desarrollado por:<br/>
+                          Darwin Ferney Vergara<br>
+                          Wilmer Jair Fernandez<br>
+                          Jose David Joaqui
+
+                   </strong>
+
+                </p>
+            </div>
+            </center>
+
+        </div>
+
+    </div>
+    </center>
+{% endblock %}
